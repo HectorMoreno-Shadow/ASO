@@ -92,6 +92,22 @@
 
 ![alt text](image-2.png)
 
+### Para añadir una ruta en el PATH
+
+`set PATH=%PATH%;C:\Users\admon\Desktop\misprogramas`
+
+Sólo en el CMD que esté ejecutandose. Si se cierra, se pierde lo que he añadido al PATH.
+
+### Para que el cmd me pregunte
+
+`set /p variable=texto_que_me_dice`
+
+![alt text](image.png)
+
+## Archivos bat (por lotes) o Script de Windows
+
+Un archivo bat, es simplemente un archivo de texto con extensión bat que contiene una serie de comandos para que el cmd lo ejecute automáticamente uno detrás de otro.
+
 ## Condicionales con IF-ELSE
 
 Un condicional permite ejecutar unas instrucciones cuando se cumple una condición.
@@ -101,17 +117,124 @@ Un condicional permite ejecutar unas instrucciones cuando se cumple una condici�
 ```
 @echo off
 
-echo Quieres continuar? (si/no)
+echo Quieres continuar? Contesta si o no
 
-set respuesta
+set /p respuesta=
 
-if respuesta==si(
-    echo Has elegido continuar
-)
-else(
-    echo Has elegido no continuar
+if /i %respuesta%==si (
+echo Has elegido continuar
+) else (
+echo Has elegido no continuar
 )
 pause
 ```
 
+`/i` -> Esto hace que la comparación no distinga entre mayúscula y minúscula.
 
+### Ejemplo condicional con números
+
+**Comparación de si es igual:**
+
+```
+@echo off
+echo Adivina el número:
+set /p respuesta=
+
+if %respuesta% EQU 4 (
+echo Has acertado.
+) else (
+echo No has acertado.
+)
+pause
+```
+
+**Comparación de si un número es mayor que otro:**
+
+```
+@echo off
+echo Dime tu edad:
+set /p respuesta=
+
+if %respuesta% GEQ 18 (
+echo Eres mayor de edad
+) else (
+echo No eres mayor de edad
+)
+pause
+```
+**Comparación de si son iguales o son distintos (EQU)**
+
+```
+@echo off
+echo Dime un numero:
+set /p numeroA=
+
+echo Ahora dime otro numero:
+set /p numeroB=
+
+if %numeroA% EQU %numeroB% (
+echo El primer numero es igual del segundo.
+) else (
+echo El primero numero es distinto del segundo
+)
+pause
+```
+**Mayor o igual a (GEQ)**
+
+```
+@echo off
+echo Dime un numero:
+set /p numeroA=
+
+echo Ahora dime otro numero:
+set /p numeroB=
+
+if %numeroA% GEQ %numeroB% (
+echo El primer numero es mayor o igual del segundo.
+) else (
+echo El primero numero es menor que el segundo
+)
+pause
+```
+**Menor a (LSS)**
+
+```
+@echo off
+echo Dime un numero:
+set /p numeroA=
+
+echo Ahora dime otro numero:
+set /p numeroB=
+
+if %numeroA% LSS %numeroB% (
+echo El primer numero es menor que el segundo.
+) else (
+echo El primero numero no es menor que el segundo
+)
+pause
+```
+
+**Comprobación de existencia**
+
+```
+if exist "Encuentrame\"(
+echo La carpeta Encuentrame ya existe
+) else (
+echo La carpeta Encuentrame no existe
+)
+```
+
+### Operadores
+
+
+| Operadores (para las comparaciones) | Significado|
+| ------------ | ------------ | 
+| == | Igual (solo para texto porque se compara un número lo interpreta como un carácter, es decir, como un símbolo)|
+| not%respuesta%==paco | Distinto |
+| EQU | Igual a ("equal") |
+| NEQ | Distinto a ("not equal") |
+| LSS | Menor a ("less") |
+| LEQ | Menor o igual ("less equal") |
+| GTR | Mayor a |
+| GEQ | Mayor o igual | 
+| exists | Existe |
