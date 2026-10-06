@@ -217,11 +217,14 @@ pause
 **Comprobación de existencia**
 
 ```
-if exist "Encuentrame\"(
+@echo off
+if exist "Encuentrame\" (
 echo La carpeta Encuentrame ya existe
 ) else (
+mkdir "Encuentrame"
 echo La carpeta Encuentrame no existe
 )
+pause
 ```
 
 ### Operadores
