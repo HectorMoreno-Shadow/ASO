@@ -78,7 +78,7 @@
 
 **Ejemplo**
 
-![alt text](image-1.png)
+![alt text](image.png)
 
 ### Para eliminar la variable
 
@@ -90,7 +90,7 @@
 
 **Ejemplo**
 
-![alt text](image-2.png)
+![alt text](image-1.png)
 
 ### Para añadir una ruta en el PATH
 
