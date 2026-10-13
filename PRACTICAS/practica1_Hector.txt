@@ -54,6 +54,17 @@ pause
 
 ::Ejercicio 4
 
+@echo off
+
+for %%x in (1 2 3 4 5) do (
+echo Creando carpeta Equipo%%x
+md Equipo%%x
+)
+echo Preparación terminada
+
+pause
+
+
 ::Ejercicio 5
 
 ::Ejercicio 6
