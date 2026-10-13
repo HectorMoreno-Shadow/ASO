@@ -1,0 +1,61 @@
+::Héctor Moreno Tejero
+
+::Ejercicio 1
+
+@echo off
+
+echo Dime tu nombre de usuario:
+
+set /p respuesta=
+
+if /i "%respuesta%"=="%USERNAME%" (
+echo Hola, usuario del equipo
+) else (
+echo El nombre no coincide con el usuario del equipo
+)
+
+pause
+
+
+::Ejercicio 2
+
+@echo off
+
+if exist "Ejercicio2_Practica3\" (
+echo La carpeta Ejercicio2_Practica3 ya existe
+) else (
+mkdir "Ejercicio2_Practica3"
+echo Carpeta Ejercicio2_Practica3 creada
+)
+
+pause
+
+::Ejercicio 3
+
+@echo off
+
+echo 1 Mostrar el nombre del usuario
+echo 2 Mostrar la carpeta temporal
+echo 3 Mostrar las rutas de path
+
+set /p respuesta=
+
+if "%respuesta%"=="1" (
+echo Tu nombre de usuario es %USERNAME%
+)
+if "%respuesta%"=="2" (
+echo La carpeta temporal: %TEMP%
+)
+if "%respuesta%"=="3" (
+echo Las rutas del path: %PATH%
+)
+
+pause
+
+::Ejercicio 4
+
+::Ejercicio 5
+
+::Ejercicio 6
+
+::Ejercicio 7
