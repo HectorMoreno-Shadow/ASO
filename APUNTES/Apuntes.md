@@ -241,3 +241,34 @@ pause
 | GTR | Mayor a |
 | GEQ | Mayor o igual | 
 | exists | Existe |
+
+**Ejemplo operador "exists"**
+
+- Comprobar que existe un archivo
+
+```
+@echo off
+for %%x in (informa.txt inventario.txt usuarios.txt) do (
+    if exist %%x (
+        echo Existe el archivo %%x
+    ) else (
+        echo Falta el archivo %%x
+    )
+)
+pause
+```
+
+## Bucles
+
+### Bucle for
+
+- **Bucle for**
+
+- **Bucle for /L** -> Recorre lista de números 
+
+### Bucle + condicional
+
+- **Bucle IF**
+
+- **Bucle IF ELSE**
+
