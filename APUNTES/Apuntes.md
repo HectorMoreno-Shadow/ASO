@@ -272,3 +272,36 @@ pause
 
 - **Bucle IF ELSE**
 
+## Comandos de gestión de usuarios en Windows con CMD
+
+- Cuenta de usuario -> Identifica a un usuario o "servicio" ante el sistema.
+
+- Autenticación -> Permite comprobar la identidad del usuario, por ejemplo, con contraseña.
+
+- Autorización -> Determina qué permisos tiene el usuario.
+
+- Grupo -> Sirve para adminsitrar conjuntamente los permisos de varias cuentas de usuario.
+
+## Tipos de cuentas usuarios en Windows
+
+Según sus privilegios:
+
+- Cuenta estándar
+
+- Cuenta Administrador
+
+- Cuenta Invitado (está en desuso)
+
+## Comandos Windows Usuario
+
+- Ver todas las cuentas de usuarios:
+
+`net user`
+
+- Para ver quienes somos:
+
+`whoami`
+
+- Información concreta de la cuenta:
+
+`net user $usuario`
