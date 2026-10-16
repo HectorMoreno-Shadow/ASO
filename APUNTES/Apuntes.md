@@ -305,3 +305,55 @@ Según sus privilegios:
 - Información concreta de la cuenta:
 
 `net user $usuario`
+
+- Para añadir un comentario (administrador):
+
+`net user admon /comment:"Hola"`
+
+- Para cambiar nombre completo:
+
+`net user nombrecuenta /fullname:"nuevo_nombre"`
+
+- Para activar una cuenta:
+
+`net user nombrecuenta /active yes`
+
+- Para desactivar una cuenta:
+
+`net user nombrecuenta /active no`
+
+- Para crear una cuenta:
+
+`net user nombrecuenta /add`
+
+- Para eliminar una cuenta:
+
+`net user nombrecuenta /delete`
+
+- Crear una cuenta con contraseña o ponerle la contraseña una vez ya creada:
+
+`net user nombrecuenta *`
+
+## Grupos de usuarios
+
+Permiten agrupar usuarios y asignarles permisos a la vez.
+
+- Para ver los grupos actuales:
+
+`net localgroup`
+
+- Ver información sobre un grupo:
+
+`net localgroup nombregrupo`
+
+- Crear un grupo:
+
+`net localgroup nombregrupo /add`
+
+- Meter un usuario a un grupo:
+
+`net localgroup nombregrupo nombreusuario /add`
+
+- Sacar un usuario de un grupo
+
+`net localgroup nombregrupo nombreusuario /delete`
