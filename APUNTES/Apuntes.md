@@ -131,6 +131,12 @@ pause
 
 `/i` -> Esto hace que la comparación no distinga entre mayúscula y minúscula.
 
+`set /p respuesta=` mostrar un mensaje en pantalla y pausar la ejecución del script para que el usuario escriba algo,
+
+También se puede escribir de esta manera en vez de utilizar `echo`:
+
+`set /p respuesta=Dime tu nombre:`
+
 ### Ejemplo condicional con números
 
 **Comparación de si es igual:**
@@ -357,3 +363,79 @@ Permiten agrupar usuarios y asignarles permisos a la vez.
 - Sacar un usuario de un grupo
 
 `net localgroup nombregrupo nombreusuario /delete`
+
+# Práctica 1 Soluciones
+
+## Ejercicio 1
+
+```bat
+@echo off
+
+echo Dime tu nombre:
+
+set /p respuesta=
+
+if /i %respuesta%==%USERNAME% (
+	echo Hola, usuario del equipo
+) else (
+	eho El nombre no coincide con el usuario del equipo
+
+pause
+```
+
+## Ejericio 2
+
+```bat
+@echo off
+
+if exist "practica3/Ejercicio2_Practica3/" (
+	echo La carpeta Ejercicio2_Practica3 ya existe
+) else (
+	mkdir "practica3/Ejercicio2_Practica3"
+	echo La carpeta Ejercicio2_Practica3 se ha creado
+)
+
+pause
+```
+
+`mkdir` Ya crea las carpetas intermedias, si "practica3" no existiera, la crearía automáticamente.
+
+## Ejercicio 3
+
+```bat
+@echo off
+
+echo 1. Mostrar el nombre del usuario
+echo 2. Mostrar la carpeta temporal
+echo 3. Mostrar las rutas path
+
+set /p respuesta=
+
+if "%respuesta%"=="1" (
+	echo Tu nombre de usuario es %USERNAME%
+)
+if "%respuesta%"=="2" (
+    echo Esta es la carpeta temporal %TEMP%
+)
+if "%respuesta%"=="3" (
+    echo Esta son las rutas del path: %PATH%
+)
+
+if "%respuesta%" NEQ "1" if "%respuesta%" NEQ "2" if "%respuesta%" NEQ "3" (
+    echo Opción no válida
+)
+
+pause
+```
+
+## Ejercicio 4
+
+```bat
+@echo off
+for %%i in (Equipo1, Equipo2, Equipo3, Equipo4, Equipo5) do (
+	echo Creando la carpeta: %%i
+	mkdir %%i
+)
+
+pause
+```
