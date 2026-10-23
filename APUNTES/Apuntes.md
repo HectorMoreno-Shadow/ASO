@@ -439,3 +439,124 @@ for %%i in (Equipo1, Equipo2, Equipo3, Equipo4, Equipo5) do (
 
 pause
 ```
+
+## Ejericicio 7 - Corregirlo con gemini
+
+```bat
+@echo off
+
+mkdir Entrada
+mkdir Archivo
+
+echo Archivo del equipo 1 > Entrada\equipo1.txt
+echo Archivo del equipo 2 > Entrada\equipo2.txt
+echo Archivo del equipo 3 > Entrada\equipo3.txt
+
+mkdir Archivos
+
+for /L %%x in (1,1,5) do (
+    if %%x==1 (
+        if exist Entrada\equipo1.txt (
+            copy Entrada\equipo1.txt Archivo
+        ) else (
+            echo Aviso falta el archivo equipo1.txt
+        )
+        if %%x==2 (
+            if exist Entrada\equipo2.txt (
+            move Entrada\equipo2.txt Archivo
+        ) else (
+            echo Aviso falta el archivo equipo2.txt
+        )
+      ) else (
+        if exist Entrada\equipo%%x.txt (
+            echo El archivo equipo%%x.txt existe.
+
+        ) else (
+            echo Aviso falta 
+        )
+      )
+    )
+)
+
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+# Practica 2 Soluciones
+
+## Ejercicio 2
+
+
+```bat
+@echo off
+
+set /p respuesta=¿Desea preparar las cuentas del examen?(S/N)
+if /i %respuesta%==S (
+    for /L %%x in (1, 1, 3) do (
+        echo Creando la cuenta aso_examen%%x
+        net user aso_examen%%x * /add
+        if %%x==1 (
+            net user aso_examen%%x /comment:"Cuenta de prueba del profesor"
+        ) else (
+            net user aso_examen%%x /comment:"Cuenta de examen del alumnado"
+        )
+        net user aso_examen%%x >> C:\Users\admon\Desktop\cuentas_examen.txt
+        echo SE HA CREADO LA CUENTA aso_examen%%x >> cuentas_examen.txt
+    )
+
+) else (
+    echo Se ha cancelado la operación.
+)
+
+pause
+
+```
+
+## Ejercicio 3
+
+```bat
+@echo off
+
+echo Creando grupos.
+net localgroup ASO_Alumnos /add
+net localgroup ASO_AlumnosPracticas /add
+echo Grupos creados con éxito.
+    
+FOR /L %%x in (1,1,3) do (
+    if %%x==1 (
+        net localgroup ASO_Alumnos aso_examen%%x /add
+    ) else (
+        net localgroup ASO_AlumnosPracticas aso_examen%%x /add
+    )
+        
+    if exist C:\Users\admon\Desktop\Informes_ASO (
+           echo La carpeta ya existe.
+    ) else (
+        echo Creando carpeta Informes_ASO...
+        mkdir C:\Users\admon\Desktop\Informes_ASO
+        echo Carpeta Informes_ASO creada con exito
+    )
+        echo Creando archivos...
+        net localgroup ASO_Alumnos > C:\Users\admon\Desktop\Informes_ASO\ASO_Alumnos.txt
+        net localgroup ASO_AlumnosPracticas > C:\Users\admon\Desktop\Informes_ASO\ASO_AlumnosPracticas.txt
+        echo Archivos creados correctamente.
+
+        echo ============INFORMACIÓN MIEMBROS DEL GRUPO===========
+        type C:\Users\admon\Desktop\Informes_ASO\ASO_Alumnos.txt
+        type C:\Users\admon\Desktop\Informes_ASO\ASO_AlumnosPracticas.txt
+
+    )
+)
+
+pause
+```
